@@ -1,0 +1,66 @@
+﻿@model TheBakeryShopper.Models.BakeryType
+
+@{
+    ViewData["Title"] = "CreateProductType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>CreateProductType</h2>
+
+<h4>BakeryType</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        @using (Html.BeginForm("CreateProductType", "ResSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.BakeryTypeName, new { @class = "control-label" })
+                @Html.EditorFor(model => model.BakeryTypeName, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.BakeryTypeName, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.TypeDiscount, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.TypeDiscount, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.TypeDiscount, "", new { @class = "text-danger" })</span>
+
+            </div>
+
+
+
+
+            <div class="form-group">
+                @Html.Label("Availablity", "Availablity", new { @class = "control-label" })
+                @if (!Model.TypeAvailability)
+                {
+                    <span> @Html.CheckBoxFor(model => model.TypeAvailability, new { @checked = false })</span>
+                }
+
+            </div>
+            <div class="form-group">
+                @Html.Label("Type Image", "Type Image", new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.TypeImage, new { type = "file", name = "file", @class = "form-control", @id = "upld-tb" })
+
+                
+
+            </div>
+            <div class="form-group">
+                <img src="" alt="Image" id="img-preview" class="img-thumbnail" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Add Product" class="btn btn-default" />
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,114 @@
+﻿@model TheBakeryShopper.Models.User.CustomerDetails
+
+@{
+    ViewData["Title"] = "SignUpNewUser";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>SignUpNewUser</h2>
+
+<h4>CustomerDetails</h4>
+<hr />
+<div class="row">
+    
+    <div class="col-md-4">
+        @using (Html.BeginForm("CreateNewUser", "ResSetup", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerName, new { @class = "control-label" })
+                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerAddr1, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.CustomerAddr1, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.CustomerAddr1, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.CustomerAddr2, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.CustomerAddr2, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.CustomerAddr2, "", new { @class = "text-danger" })</span>
+
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Country, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.Country, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.Country, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.State, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.State, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.State, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PinCode, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.PinCode, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.PinCode, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.PhoneNumber, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserName, new { @class = "control-label" })
+
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserPassword, new { @class = "control-label" })
+
+                @Html.PasswordFor(model => model.UserPassword, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.UserPassword, "", new { @class = "text-danger" })</span>
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.UserPasswordMatch, new { @class = "control-label" })
+
+                @Html.PasswordFor(model => model.UserPasswordMatch, new { htmlAttributes = new { @class = "form-control" } })
+                <span>@Html.ValidationMessageFor(model => model.UserPasswordMatch, "", new { @class = "text-danger" })</span>
+
+            </div>
+@*
+            <div class="form-group">
+                @Html.Label("Type Image", "Type Image", new { @class = "control-label" })
+                @Html.TextBoxFor(model => model.TypeImage, new { type = "file", name = "file", @class = "form-control", @id = "upld-tb" })
+
+
+
+            </div>*@
+            <div class="form-group">
+                <img src="" alt="Image" id="img-preview" class="img-thumbnail" />
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create User" class="btn btn-default" />
+            </div>
+        }
+    </div>
+   
+        </div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
